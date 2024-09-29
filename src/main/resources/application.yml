@@ -1,0 +1,15 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: microservice-graalvm
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  data:
+    mongodb:
+      uri: mongodb+srv://smcbrmmm:P_77w0rd@cluster0.lside.mongodb.net/payment_transaction
+      database: payment_transaction
+logging:
+  file:
+    path: /app/logs
+    name: app.log

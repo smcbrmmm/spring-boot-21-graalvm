@@ -1,0 +1,13 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: ${SERVICE_NAME}
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  data:
+    mongodb:
+#      uri: ${MONGO_DB_URI}
+logging:
+  file:
+    path: /app/logs

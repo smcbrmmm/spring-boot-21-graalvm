@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: my_mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root  # Set the root username
+      MONGO_INITDB_ROOT_PASSWORD: password  # Set the root password
+      MONGO_INITDB_DATABASE: payment_transaction  # Set the initial database name
+    volumes:
+      - ./mongodb:/data/db
+
+  app:
+    image: graal-v2
+    ports:
+      - "8080:8090"
+    environment:
+      MONGO_DB_URI: mongodb://root:password@localhost:27017/payment_transaction
+      SERVICE_NAME: container-graalvm
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      - mongodb
